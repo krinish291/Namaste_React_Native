@@ -1,1 +1,1 @@
-# Namaste_React_Native
+# Namaste React Native
