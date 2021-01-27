@@ -5,6 +5,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import ClassLifeCycle from './App/Screen/ClassLifeCycle';
 import FunctionLifeCycle from './App/Screen/FunctionLifeCycle';
+import TodoApp from './App/TodoApp/TodoApp';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -20,6 +21,7 @@ class App extends Component {
         <NavigationContainer>
           <Tab.Navigator>
             <Tab.Screen name="Class" component={ClassLifeCycle} />
+            <Tab.Screen name="TodoApp" component={TodoApp} />
             <Tab.Screen name="Function" component={FunctionLifeCycle} />
           </Tab.Navigator>
         </NavigationContainer>
