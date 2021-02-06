@@ -5,10 +5,10 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import TodoList from '../SubComponent/TodoList';
+import {Keyboard} from 'react-native';
 
 export default function App() {
   const [value, setValue] = useState('');
@@ -16,18 +16,10 @@ export default function App() {
 
   addTodo = () => {
     if (value.length > 0) {
-      setTodos([...todos, {text: value, key: Date.now(), checked: false}]);
+      Keyboard.dismiss();
+      setTodos([{text: value, key: Date.now()}, ...todos]);
       setValue('');
     }
-  };
-
-  checkTodo = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.key === id) todo.checked = !todo.checked;
-        return todo;
-      }),
-    );
   };
 
   deleteTodo = (id) => {
@@ -55,17 +47,7 @@ export default function App() {
           <Icon name="plus" size={30} color="blue" style={{marginLeft: 15}} />
         </TouchableOpacity>
       </View>
-      <ScrollView style={{width: '100%'}}>
-        {todos.map((item) => (
-          <TodoList
-            text={item.text}
-            key={item.key}
-            checked={item.checked}
-            setChecked={() => checkTodo(item.key)}
-            deleteTodo={() => deleteTodo(item.key)}
-          />
-        ))}
-      </ScrollView>
+      <TodoList data={todos} deleteTodo={deleteTodo} />
     </View>
   );
 }
@@ -75,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
   },
   header: {
     marginTop: '15%',
@@ -97,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
-    paddingLeft: 10,
+    paddingLeft: 20,
     minHeight: '3%',
   },
 });
