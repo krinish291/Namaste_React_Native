@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import ClassLifeCycle from './App/Screen/ClassLifeCycle';
 import FunctionLifeCycle from './App/Screen/FunctionLifeCycle';
-import TodoApp from './App/TodoApp/TodoApp';
+import TodoApp from './App/Screen/TodoApp';
 
 const Tab = createMaterialBottomTabNavigator();
 
